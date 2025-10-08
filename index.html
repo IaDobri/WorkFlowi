@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkFlow</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <!-- Экран авторизации -->
+    <div class="container auth-screen" id="auth-screen">
+        <div class="auth-header">
+            <div class="app-title">WorkFlow</div>
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-form="login-form">ВХОД</button>
+                <button class="auth-tab" data-form="register-form">РЕГИСТРАЦИЯ</button>
+            </div>
+        </div>
+        
+        <!-- Форма входа -->
+        <form class="auth-form active" id="login-form">
+            <div class="form-group">
+                <label class="form-label">EMAIL</label>
+                <input type="email" class="form-input" placeholder="Введите email" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">ПАРОЛЬ</label>
+                <input type="password" class="form-input" id="login-password" placeholder="Введите пароль" required>
+                <button type="button" class="password-toggle" id="login-password-toggle">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+            <button type="submit" class="auth-button">ВОЙТИ</button>
+        </form>
+        
+        <!-- Форма регистрации -->
+        <form class="auth-form" id="register-form">
+            <div class="form-group">
+                <label class="form-label">ИМЯ</label>
+                <input type="text" class="form-input" id="register-name" placeholder="Введите имя" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">EMAIL</label>
+                <input type="email" class="form-input" id="register-email" placeholder="Введите email" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">ПАРОЛЬ</label>
+                <input type="password" class="form-input" id="register-password" placeholder="Введите пароль" required>
+                <button type="button" class="password-toggle" id="register-password-toggle">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+            <div class="form-group">
+                <label class="form-label">ПОДТВЕРДИТЕ ПАРОЛЬ</label>
+                <input type="password" class="form-input" id="register-confirm-password" placeholder="Повторите пароль" required>
+                <button type="button" class="password-toggle" id="register-confirm-password-toggle">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+            <button type="submit" class="auth-button">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+        </form>
+    </div>
+    
+    <!-- Основное приложение -->
+    <div class="container app-screen" id="app-screen">
+        <!-- Главный экран -->
+        <div class="screen active" id="tasks-screen">
+            <!-- Верхняя панель с иконкой и навигацией -->
+            <div class="header">
+                <div class="account-icon" id="account-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="nav-buttons">
+                    <button class="nav-btn active" data-screen="tasks-screen">Главная</button>
+                    <button class="nav-btn" data-screen="calendar-screen">Календарь</button>
+                </div>
+            </div>
+
+            <!-- Основной контент -->
+            <div class="main-content">
+                <div class="current-date" id="currentDate">Среда, 17 Апреля</div>
+                
+                <div class="dates-scroll" id="datesScroll">
+                    <!-- Даты будут сгенерированы JavaScript -->
+                </div>
+            </div>
+            
+            <div class="content">
+                <div class="panel">
+                    <div class="panel-header">
+                        <div class="panel-title">Ежедневные задачи</div>
+                        <div class="progress-text" id="dailyProgress">0/0 завершено</div>
+                    </div>
+                    
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="dailyProgressBar" style="width: 0%"></div>
+                    </div>
+                    
+                    <div class="tasks-list" id="dailyTasks">
+                        <!-- Задачи будут загружены JavaScript -->
+                    </div>
+                    
+                    <button class="add-task-btn" id="openModalBtn">
+                        <i class="fas fa-plus"></i> Добавить задачу
+                    </button>
+                </div>
+                
+                <div class="panel">
+                    <div class="panel-header">
+                        <div class="panel-title">Рутина</div>
+                    </div>
+                    
+                    <table class="routine-table" id="routineTable">
+                        <tr>
+                            <th>пн</th>
+                            <th>вт</th>
+                            <th>ср</th>
+                            <th>чт</th>
+                            <th>пт</th>
+                            <th>сб</th>
+                            <th>вс</th>
+                        </tr>
+                    </table>
+                    
+                    <div class="month-progress">
+                        <div class="month-progress-text">
+                            <span>На этой неделе:</span>
+                            <span id="weeklyProgress">0/0 выполнено</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="weeklyProgressBar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Экран календаря -->
+        <div class="screen" id="calendar-screen">
+            <!-- Верхняя панель с иконкой и навигацией -->
+            <div class="header">
+                <div class="account-icon" id="account-icon-calendar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="nav-buttons">
+                    <button class="nav-btn" data-screen="tasks-screen">Главная</button>
+                    <button class="nav-btn active" data-screen="calendar-screen">Календарь</button>
+                </div>
+            </div>
+
+            <!-- Календарь -->
+            <div class="calendar-header">
+                <div class="calendar-controls">
+                    <div class="month-year-selector">
+                        <button class="nav-arrow" id="prev-month"><i class="fas fa-chevron-left"></i></button>
+                        <select class="month-select" id="month-select">
+                            <option value="0">Январь</option>
+                            <option value="1">Февраль</option>
+                            <option value="2">Март</option>
+                            <option value="3">Апрель</option>
+                            <option value="4">Май</option>
+                            <option value="5">Июнь</option>
+                            <option value="6">Июль</option>
+                            <option value="7">Август</option>
+                            <option value="8">Сентябрь</option>
+                            <option value="9">Октябрь</option>
+                            <option value="10">Ноябрь</option>
+                            <option value="11">Декабрь</option>
+                        </select>
+                        <select class="year-select" id="year-select">
+                            <!-- Years will be populated by JavaScript -->
+                        </select>
+                        <button class="nav-arrow" id="next-month"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <button class="today-btn" id="today-btn">Сегодня</button>
+                </div>
+                <div class="calendar-actions">
+                    <button class="add-event-btn" id="add-event-btn"><i class="fas fa-plus"></i> Добавить мероприятие</button>
+                </div>
+            </div>
+            
+            <div class="calendar-container">
+                <table class="calendar" id="calendar-table">
+                    <thead>
+                        <tr>
+                            <th>ПН</th>
+                            <th>ВТ</th>
+                            <th>СР</th>
+                            <th>ЧТ</th>
+                            <th>ПТ</th>
+                            <th>СБ</th>
+                            <th>ВС</th>
+                        </tr>
+                    </thead>
+                    <tbody id="calendar-body">
+                        <!-- Calendar will be generated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="events-list">
+                <div class="events-title" id="events-title">Мероприятия на сегодня</div>
+                <div id="events-container">
+                    <!-- Events will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно добавления задачи -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="back-btn" id="backBtn">Назад</button>
+                <h2>добавить задачу</h2>
+                <button class="done-btn" id="doneBtn" disabled>Готово</button>
+            </div>
+            
+            <textarea class="task-input" id="taskInput" placeholder="Напишите что-нибудь"></textarea>
+            
+            <div class="task-options">
+                <div class="option-item" id="categoryBtn">
+                    <span>Категории</span>
+                    <span class="arrow">➤</span>
+                </div>
+                <div class="option-item" id="timeBtn">
+                    <span>Время</span>
+                    <span class="arrow">➤</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно добавления мероприятия -->
+    <div class="modal-overlay" id="eventModalOverlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="back-btn" id="eventBackBtn">Назад</button>
+                <h2>добавить мероприятие</h2>
+                <button class="done-btn" id="eventDoneBtn" disabled>Готово</button>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">НАЗВАНИЕ</label>
+                <input type="text" class="form-input" id="eventNameInput" placeholder="Введите название" required>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">ВРЕМЯ</label>
+                <input type="text" class="form-input" id="eventTimeInput" placeholder="Например: 9:00 - 10:30" required>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно аккаунта -->
+    <div class="account-modal" id="account-modal">
+        <div class="account-content">
+            <div class="account-header">
+                <div class="account-avatar" id="account-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="account-name" id="account-display-name">Пользователь</div>
+                <div class="account-email" id="account-display-email">email@example.com</div>
+            </div>
+            
+            <div class="account-info">
+                <div class="info-item">
+                    <span class="info-label">Имя:</span>
+                    <span class="info-value" id="account-info-name">Пользователь</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Email:</span>
+                    <span class="info-value" id="account-info-email">email@example.com</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Дата регистрации:</span>
+                    <span class="info-value" id="account-registration-date">Не указана</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Выполнено задач:</span>
+                    <span class="info-value" id="account-completed-tasks">0</span>
+                </div>
+            </div>
+            
+            <div class="account-actions">
+                <button class="account-btn settings">
+                    <i class="fas fa-cog"></i> Настройки
+                </button>
+                <button class="account-btn logout" id="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Выйти из аккаунта
+                </button>
+                <button class="account-btn" id="close-account">
+                    <i class="fas fa-times"></i> Закрыть
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>

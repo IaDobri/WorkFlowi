@@ -1,0 +1,840 @@
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background: #f5f5f7;
+    color: #1d1d1f;
+    line-height: 1.4;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    background: white;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Стили авторизации */
+.auth-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.app-title {
+    font-size: 32px;
+    font-weight: bold;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 30px;
+}
+
+.auth-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.auth-tab {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #666;
+    cursor: pointer;
+    padding: 5px 0;
+    position: relative;
+}
+
+.auth-tab.active {
+    color: #667eea;
+    font-weight: 600;
+}
+
+.auth-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #667eea;
+}
+
+.auth-form {
+    display: none;
+}
+
+.auth-form.active {
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+}
+
+.form-input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #f0f0f0;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 15px;
+    top: 40px;
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+}
+
+.auth-button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.auth-button:active {
+    transform: scale(0.98);
+}
+
+/* Стили основного приложения */
+.app-screen {
+    display: none;
+}
+
+/* Header с иконкой и навигацией */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.account-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.account-icon:hover {
+    transform: scale(1.05);
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #666;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: all 0.3s;
+}
+
+.nav-btn.active {
+    color: #667eea;
+    font-weight: bold;
+}
+
+/* Основной контент */
+.main-content {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+}
+
+.current-date {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Dates Scroll */
+.dates-scroll {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding: 10px 0;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.dates-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.date-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 45px;
+    padding: 10px 5px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.2);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.date-item.active {
+    background: rgba(255,255,255,0.3);
+    transform: scale(1.05);
+}
+
+.date-day {
+    font-size: 12px;
+    opacity: 0.8;
+    margin-bottom: 5px;
+}
+
+.date-number {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Content */
+.content {
+    padding: 20px;
+    padding-bottom: 80px;
+}
+
+.panel {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.panel-title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.progress-text {
+    font-size: 14px;
+    color: #666;
+}
+
+.progress-bar {
+    height: 6px;
+    background: #f0f0f0;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.tasks-list {
+    margin-bottom: 15px;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.task-item:last-child {
+    border-bottom: none;
+}
+
+.task-checkbox {
+    width: 22px;
+    height: 22px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    margin-right: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.task-checkbox.checked {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: #667eea;
+    color: white;
+}
+
+.task-text {
+    flex: 1;
+    font-size: 16px;
+}
+
+.task-text.checked {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.add-task-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+
+.add-task-btn:active {
+    transform: scale(0.98);
+}
+
+.add-task-btn i {
+    margin-right: 8px;
+}
+
+/* Routine Table */
+.routine-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+
+.routine-table th {
+    padding: 10px 0;
+    font-weight: normal;
+    color: #666;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.routine-table td {
+    text-align: center;
+    padding: 8px 0;
+}
+
+.routine-checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    margin: 0 auto;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.routine-checkbox.checked {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: #667eea;
+    color: white;
+}
+
+.month-progress {
+    margin-top: 15px;
+}
+
+.month-progress-text {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Календарь */
+.calendar-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.calendar-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.month-year-selector {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.month-select, .year-select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.nav-arrow {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #666;
+    padding: 8px;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.nav-arrow:hover {
+    background: #f0f0f0;
+}
+
+.today-btn {
+    padding: 8px 16px;
+    background: #667eea;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.today-btn:hover {
+    background: #5a6fd8;
+    transform: translateY(-1px);
+}
+
+.calendar-actions {
+    width: 100%;
+}
+
+.add-event-btn {
+    padding: 12px 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    width: 100%;
+}
+
+.add-event-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.add-event-btn:active {
+    transform: translateY(0);
+}
+
+.add-event-btn i {
+    margin-right: 8px;
+}
+
+.calendar-container {
+    padding: 20px;
+}
+
+.calendar {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.calendar th {
+    padding: 10px 0;
+    font-weight: normal;
+    color: #666;
+    font-size: 14px;
+    text-align: center;
+}
+
+.calendar td {
+    text-align: center;
+    padding: 12px 0;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 8px;
+    position: relative;
+    font-size: 14px;
+}
+
+.calendar td:hover {
+    background-color: #f8f9fa;
+}
+
+.calendar td.selected {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: 600;
+}
+
+.calendar td.today {
+    background-color: #e3f2fd;
+    color: #1976d2;
+    font-weight: 600;
+    border: 2px solid #1976d2;
+}
+
+.calendar td.today.selected {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: 2px solid #667eea;
+}
+
+.calendar td.other-month {
+    color: #ccc;
+}
+
+.calendar td.has-event::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: #667eea;
+    border-radius: 50%;
+}
+
+.calendar td.selected.has-event::after {
+    background: white;
+}
+
+.calendar td.today.has-event::after {
+    background: #1976d2;
+}
+
+.events-list {
+    padding: 20px;
+}
+
+.events-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #2575fc;
+}
+
+.event-item {
+    padding: 12px;
+    margin-bottom: 10px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #2575fc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.event-info {
+    flex: 1;
+}
+
+.event-time {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.event-name {
+    font-weight: bold;
+}
+
+.event-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.event-delete {
+    background: none;
+    border: none;
+    color: #ff4757;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.no-events {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+    padding: 20px;
+}
+
+/* Modal */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 20px 20px 0 0;
+    padding: 20px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.modal-header button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #667eea;
+    cursor: pointer;
+    padding: 8px 12px;
+}
+
+.modal-header h2 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.task-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    resize: none;
+    min-height: 120px;
+    font-family: inherit;
+    margin-bottom: 20px;
+}
+
+.task-input::placeholder {
+    color: #999;
+}
+
+.task-options {
+    margin-bottom: 20px;
+}
+
+.option-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.option-item:last-child {
+    border-bottom: none;
+}
+
+.arrow {
+    color: #ccc;
+    font-size: 14px;
+}
+
+/* Стили для экрана аккаунта */
+.account-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+.account-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.account-content {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.account-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px 0;
+}
+
+.account-avatar {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    margin: 0 auto 15px;
+}
+
+.account-name {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.account-email {
+    color: #666;
+    font-size: 14px;
+}
+
+.account-info {
+    margin-bottom: 30px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.info-label {
+    color: #666;
+}
+
+.info-value {
+    font-weight: 500;
+}
+
+.account-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.account-btn {
+    padding: 15px;
+    background: none;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.account-btn:hover {
+    background-color: #f8f9fa;
+}
+
+.account-btn.settings {
+    color: #667eea;
+    border-color: #667eea;
+}
+
+.account-btn.logout {
+    color: #ff4757;
+    border-color: #ff4757;
+}
+
+/* Стили для экранов */
+.screen {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+}
